@@ -1,117 +1,295 @@
-{{x.voter_id}}
-{{check}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% load static %}
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Edit Voters Registration</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'polls/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'polls/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'polls/vendor/magnific-popup/magnific-popup.css' %} " rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="{% static 'polls/css/creative.min.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
 
 
 
 
-<form action="{% url 'polls:edit2'  %}" method="post">
 
-{% csrf_token %}
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Election Commission</a>
+            </div>
 
-<br>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-Voter Id:{{x.voter_id}}
-<br>
-<br>
-Name:  <input type="text" name="name" value='{{x.name}}' />
-<br>
-<br>  {% if x.gender == 'M' %}
-Gender: <input type="radio" name="gender" value='M' checked>Male
-         <input type="radio" name="gender" value='F'>Female
+    <section class="bg-primary" id="registration">
+        <div class="container">
+            <form action="{% url 'polls:edit2'  %}" method="post">
+                {% csrf_token %}
+                <div class="form-group" >
+                <label for="name">Name:</label>
+                <input type="text" required="true" name="name" value='{{x.name}}' class="form-control" id="name">
+            </div>
+            
+            <fieldset class="form-group">
+            <label for="gender">Gender:</label>
+               {% if x.gender == 'M' %}
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" id="radio_male" value="option1" checked>
+                        Male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" id="radio_female" value="option2">
+                        Female
+                    </label>
+                </div>
+                {%else%}
 
- {%else%}
-    Gender: <input type="radio" name="gender" value='M' >Male
-         <input type="radio" name="gender" value='F' checked>Female
-{%endif%}
-  
-<br>
-<br>
-Spouse Name:  <input type="text" name="spousename"  value='{{x.spousename}}'/>
-<br>
-<br>
-Father Name: <input type="text" name="fathername" value='{{x.fathername}}'/>
-<br>
-<br>
-GrandFather Name: <input type="text" name="gfathername" value='{{x.gfathername}}'/>
-<br>
-<br>
-Mother Tongue: <input type="text" name="mothertongue" value='{{x.mothertongue}}'/>
-<br>
-<br>
-Mobile:<input type="text" name="mobile" value='{{x.mobile}}'/>
-<br>
-<br>
-Email: <input type="email" name="email" value='{{x.email}}'/>
-<br>
-<br>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" id="radio_male" value="option1">
+                        Male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" id="radio_female" value="option2" checked="">
+                        Female
+                    </label>
+                </div>
+                {%endif%}
+    
+            </fieldset>
+            
+            <div class="form-group">
+                <label for="spousename">Spouse Name:</label>
+                <input type="text" name="spousename" class="form-control" value='{{x.spousename}}' id="spousename">
+            </div>
+                
+            <div class="form-group">
+                <label for="fathername">Father Name:</label>
+                <input type="text" required="true" name="fathername" value='{{x.fathername}}' class="form-control" id="fathername">
+            </div>
+                
+            <div class="form-group">
+                <label for="gfathername">GrandFather Name:</label>
+                <input type="text" required="true" name="gfathername" value='{{x.grandfathername}}' class="form-control" id="gfathername">
+            </div>
+                
+            <div class="form-group">
+                <label for="mothertongue">Mother Tongue:</label>
+                <input type="text" required="true" name="mothertongue" class="form-control" value='{{x.mothertongue}}' id="mothertongue">
+            </div>
+                
+            <div class="form-group">
+                <label for="mobile">Mobile:</label>
+                <input type="text" required="true"  value='{{x.mobile}}' name="mobile" class="form-control" id="mobile">
+            </div>
+                
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" name="email"  value='{{x.email}}' class="form-control" id="email">
+            </div>
+                        
+            <fieldset class="form-group">
+            <label for="literacystatus">Literacy Status:</label>
+                 {% if x.literacystatus == 'Y' %}
 
-Literacy Status <input type="radio" name="literacystatus" value='Y' checked>Yes
-         <input type="radio" name="literacystatus" value='N'>No
-<br>
-<br> 
-Qualification <input type="text" name="qualification" value='{{x.qualification}}'/>
-<br>
-<br>
-<br>
-Permanent Address
-<br>
-<br>
-District           <input type="text" name="district" value='{{x.district}}'>
-<br>
-<br>
-VDC/Municipality            <input type="text" name="vdc_municipality"  value='{{x.vdc_municipality}}'>
-<br>
-<br>
-Ward No <input type="text" name="ward_no" value='{{x.ward_no}}'>
-<br>
-<br>
-<br>
- Disability  <input type="radio" name="disability" value="NULL" checked>None
-         <input type="radio" name="disability" value="a">Visual Impaired
-          <input type="radio" name="disability" value="b">Hearing Impaired  
- <input type="radio" name="disability" value="c">Speech Impaired
-         <input type="radio" name="disability" value="d">Amputee
-         <input type="radio" name="disability" value="e">Other
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="literacystatus" id="radio_male" value="option1" checked>
+                        Yes
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="literacystatus" id="radio_female" value="option2">
+                        No
+                    </label>
+                </div>
+    
+                    {%else%}
+<div class="radio">
+                    <label>
+                        <input type="radio" name="literacystatus" id="radio_male" value="option1" >
+                        Yes
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="literacystatus" id="radio_female" value="option2" checked>
+                        No
+                    </label>
+                </div>
+                
+                {%endif%} 
+            </fieldset>
+            
+            <div class="form-group">
+                <label for="qualification">Qualification:</label>
+                <input type="text" name="qualification" class="form-control" id="qualification"  value='{{x.qualification}}'>
+            </div>
+                
+            <fieldset class="form-group">
+                <label for="permaddress">Permanent Address</label>
+                <div id="permaddress">
+                    <div class="form-group">
+                    <label for="district" class="col-xs-4 col-form-label">District:</label>
+                    <div class="col-xs-8">
+                    <input type="text" required="true" name="district" class="form-control" id="district" value='{{x.district}}'>
+                    </div>
+                    </div>
+                    <br><br><br>
+                    <div class="form-group">
+                    <label for="vdc_municipality" class="col-xs-4 col-form-label">VDC/Municipality:</label>
+                    <div class="col-xs-8">
+                    <input type="text" required="true" name="vdc_municipality" class="form-control" id="vdc_municipality" value='{{x.vdc_municipality}}'>
+                    </div>
+                    </div>
+                    
+                    <br><br>
+                    <div class="form-group">
+                    <label for="ward_no" class="col-xs-4 col-form-label">Ward No:</label>
+                    <div class="col-xs-8">
+                    <input type="text" required="true" name="ward_no" class="form-control" id="ward_no" value='{{x.ward_no}}'>
+                    </div>
+                    </div>
+                    <br>
+                </div>
+            </fieldset>
+            
+            <fieldset class="form-group">
+                <label >Disability:</label>
+                <div class="checkbox">
+                    <label><input name="disability" type="checkbox" value="NULL" checked> None</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="disability" type="checkbox" value="a"> Visual Impaired</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="disability" type="checkbox" value="b"> Hearing Impaired</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="disability" type="checkbox" value="c"> Speech Impaired</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="disability" type="checkbox" value="d"> Amputee</label>
+                </div>
+                <div class="checkbox">
+                    <label><input name="disability" type="checkbox" value="e"> Other</label>
+                </div>
+                
+            </fieldset>
+                
+            <div class="form-group">
+                <label for="citizenship">Citizenship Id:</label>
+                <input type="text" required="true" name="citizenship" class="form-control" id="citizenship" value='{{x.citizenship_id}}'>
+            </div>
+                
+           
+                
+            <div class="form-group">
+                <label for="citizenshiptype">Citizenship Type:</label>
+                <input type="text" required="true" name="citizenshiptype" class="form-control" id="citizenshiptype" value='{{x.citizenshiptype}}'>
+            </div>
+            
 
-<br>
-<br>
-<br>
-Citizenship Id <input type="text" name="citizenship" value='{{x.citizenship_id}}'>
-<br>
-<br>
-<br>
-Issued Address  <br>
-<br>
-District           <input type="text" name="cdistrict">
-<br>
-<br>
-VDC/Municipality            <input type="text" name="cvdc_municipality">
-<br>
-<br>
-Ward No <input type="text" name="cward_no">
-<br>
-<br>
-<br>
-Citizenship Type <input type="text" name="citizenshiptype" value='{{x.citizenshiptype}}'>
-<br>
-<br>
-BirthDistrict <input type="text" name="birthdistrict">
-<br>
-<br>
-Issue Date <input type="date" name="issuedate">
-<br>
-<br>
-DOB <input type="date" name="dob">
-<br>
-<br>
-<input type="submit" value="save"/>
+             <button type="submit" value="Save"  class='page-scroll btn btn-default btn-xl sr-button'>Save</button>
+            
+            
+            </form>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Contact Details</h2>
+                    <hr class="primary">
+                    <p>Election Commission Nepal<br>Kantipath, Kathmandu</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact"></i>
+                    <p>977-01-4233497</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    <p><a href="mailto:your-email@your-domain.com">info@election.gov.np</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="{% static 'polls/vendor/jquery/jquery.min.js' %} "></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'polls/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="{% static 'polls/vendor/scrollreveal/scrollreveal.min.js'%}"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'polls/js/creative.min.js' %}"></script>
 
 
-</form>
 
-</center>
 
 </body>
+
 </html>
+
+
 
 
