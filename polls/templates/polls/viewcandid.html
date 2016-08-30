@@ -32,6 +32,16 @@
 				<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 				<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		 <style type="text/css">
+    label   { font-size:18px;
+      width:100%;
+            }
+    .field {background-color:#f5f5f5;}
+
+    .main_head {text-align: center;
+    	font-color:black;
+    }
+    </style>
 
 </head>
 
@@ -73,65 +83,528 @@
 			 <div class="container">
 	 
 
+<legend class="well well-sm main_head"><h2>Candidate Information</h2></legend>
+
+
+ <div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">Candidate Full Name</label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >{{canInfo.can_fullname}}</div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+Voter Id
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{canInfo.can_voter_id}}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+Gender
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{canInfo.can_gender}}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	FatherName
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{canInfo.can_fathername}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+Date of Birth
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{canInfo.can_dob}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+Party Involved
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{partyInfo.party_name}}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Area District
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{areaInfo.area_district}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Area No
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{areaInfo.area_no}}
+    </div>
+  </div>
+</div>
+
+
+
+<legend style="color:white;">Permanent Address</legend>
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+District
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{canAddressInfo.district}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	VDC / Municipality
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{canAddressInfo.vdc_municipality}}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+Ward No.
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{canAddressInfo.wardno}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<hr class="light" style="max-width:100%; border-color:#f5f5f5; border-width:1px">
+
+
+<legend style="color:white;">Pledge Information</legend>
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Bank Name
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{pledgeInfo.pl_bankname}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+Voucher No.
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{pledgeInfo.pl_voucherno}}
+    </div>
+  </div>
+</div>
+
+
+
+
+<hr class="light" style="max-width:100%; border-color:#f5f5f5; border-width:1px">
+
 
 <fieldset>
-<legend><h2>Candidate Information</h2></legend>
-	<p>Candidate Full Name: {{canInfo.can_fullname}}</p>
-	<p>Voter Id: {{canInfo.can_voter_id}}</p>
-	<p>Gender: {{canInfo.can_gender}}</p>
-	<p>FatherName: {{canInfo.can_fathername}}</p>
-	<p>Date of Birth: {{canInfo.can_dob}}</p>
-	<p>Party Involved: {{partyInfo.party_name}} </p>
-	<p>Area District: {{areaInfo.area_district}}</p>
-	<p>Area No: {{areaInfo.area_no}}</p>
-
-
-	<h3>Permanent Address</h3>
-	 <p>district: {{canAddressInfo.district}}</p>
-	 <p>vdc_municipality: {{canAddressInfo.vdc_municipality}}</p>
-	 <p>wardno: {{canAddressInfo.wardno}}</p>
-	
-	<h3>Pledge Information </h3>
-		<p>Pledge Bank Name: {{pledgeInfo.pl_bankname}}</p>
-		<p>Pledge Voucher No: {{pledgeInfo.pl_voucherno}}</p>
-	</fieldset>
-<hr style="background-color:grey; height:2px;">
-
-<fieldset>
-<legend><h2>Mover Information</h2></legend>
-	 <p> Mover Name: {{moverInfo.mover_fullname}} </p>
-	 <p>Voter Id: {{moverInfo.mover_voter_id}}</p>
-	 <p>Gender: {{moverInfo.mover_gender}}</p>
-	 <p> FatherName: {{moverInfo.mover_fathername}}</p>
-	 <p>Date of Birth: {{moverInfo.mover_dob}}</p>
-
-	<h3>Permanent Address </h3>
-	 <p>district: {{moverAddressInfo.district}}</p>
-	 <p>vdc_municipality: {{moverAddressInfo.vdc_municipality}}</p>
-	 <p>wardno: {{moverAddressInfo.wardno}}</p>
-</fieldset>
-<hr style="background-color:grey; height:2px;">
-
-<fieldset>
-<legend><h2>Supporter Information</h2></legend>
-		<p>Supporter Name: {{suppInfo.supp_fullname}} </p>
-		<p>Voter Id: {{suppInfo.supp_voter_id}}</p>
-	  <p> Gender: {{suppInfo.supp_gender}}</p>
-		<p>FatherName: {{suppInfo.supp_fathername}}</p>
-		<p>Date of Birth: {{suppInfo.supp_dob}}</p>  
-
- <h3> Permanent Address </h3>
- <p>   district: {{suppAddressInfo.district}}</p>
-	 <p>vdc_municipality: {{suppAddressInfo.vdc_municipality}}</p>
-	 <p>wardno: {{suppAddressInfo.wardno}}</p>
-</fieldset>
 
 
 
-<legend style="color:white">Name:</legend>
-								<div style="color:black" class="well well-sm" >
-								{{x.name}}
-							</div>
+<legend class="well well-sm main_head"><h2>Mover Information</h2></legend>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Mover Name
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{moverInfo.mover_fullname}}
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Voter Id
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{moverInfo.mover_voter_id}}
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+Gender
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{moverInfo.mover_gender}}
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Father Name
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{moverInfo.mover_fathername}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Date of Birth
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{moverInfo.mover_dob}}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<legend style="color:white;">Permanent Address</legend>
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+District
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{moverAddressInfo.district}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	VDC / Municipality
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{moverAddressInfo.vdc_municipality}}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+Ward No.
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+ {{moverAddressInfo.wardno}}
+
+    </div>
+  </div>
+</div>
+
+
+
+<hr class="light" style="max-width:100%; border-color:#f5f5f5; border-width:1px">
+
+
+
+<legend class="well well-sm main_head"><h2>Supporter Information</h2></legend>
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Supporter Name
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{suppInfo.supp_fullname}} 
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Voter Id
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{suppInfo.supp_voter_id}}
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+Gender
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{suppInfo.supp_gender}}
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Father Name
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{suppInfo.supp_fathername}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	Date of Birth
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{suppInfo.supp_dob}}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<legend style="color:white;">Permanent Address</legend>
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+District
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+{{suppAddressInfo.district}}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	VDC / Municipality
+
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+
+{{suppAddressInfo.vdc_municipality}}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 col-form-label">
+  	
+Ward No.
+  </label>
+  <div class="col-xs-10">
+    <div class="form-control field" id="example-text-input" >
+ {{suppAddressInfo.wardno}}
+
+    </div>
+  </div>
+</div>
+
+
+
+<hr class="light" style="max-width:100%; border-color:#f5f5f5; border-width:1px">
+
+
+
+
 
 
 	 <form action="{% url 'polls:edit' %}" method="post">

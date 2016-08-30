@@ -46,19 +46,14 @@
 		var yes = document.getElementById('checkYes');
 		var no = document.getElementById('checkNo');
 		var divShow = document.getElementById('divShow');
+		var party = document.getElementById('can_party_name');
 		
 		divShow.style.display = yes.checked ? "block" : "none";
 		divShow.style.display = no.checked ? "none" : "block";
 	
-		//divShow.required = yes.checked ? true : false;
-		//divShow.required = no.checked ? false : true;
-		
-		if(no.checked)
-			divShow.removeAttribute("required");
-		else if (yes.checked)
-			divShow.setAttribute("required","true");
-
-	}			
+		party.required = yes.checked ? true : false;
+		party.required = no.checked ? false : true;
+	}
 			
 </script>
 
@@ -151,7 +146,7 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="can_party" id="checkNo" checked >
+                        <input type="radio" name="can_party" id="checkNo" onclick="showDiv()" checked >
                         No
                     </label>
                 </div>
@@ -160,7 +155,7 @@
 <div id="divShow" style="display:none">
 		 <div class="form-group">
                 <label for="can_party_name">Party Name:</label>
-                <input type="text" name="can_party_name" class="form-control" id="can_party_name" required="true">
+                <input type="text" name="can_party_name" class="form-control" id="can_party_name">
             </div>
 	</div>	
             
@@ -430,60 +425,8 @@
     <!-- Theme JavaScript -->
     <script src="{% static 'polls/js/creative.min.js' %}"></script>
 
-{% if check == 0 %}
-  <h1>Sucessfully submitted</h1>
-{%elif check == 1 %}
-  <h1>Error in one or more input</h1>
-{% endif %}
 
 
-
-<<<<<<< HEAD
-<p>Voter Id:<input type="number" name="can_voter_id" required></p>
-<p>Pledge Bank Name: <input type="text" name="can_pledge_bank" required></p>
-<p>Pledge Voucher No: <input type="number" name="can_pledge_no" required></p>
-<h3>Address</h3>
-<p>District: <input type="text" name="can_district" required></p>
-<p>Municipality/VDC: <input type="text" name="can_vdc" required></p>
-<p>Ward No: <input type="number" name="can_ward" required></p>
-<h3>Area</h3>
-<p>Area District: <input type="text" name="can_area_district" required></p>
-<p>Area Number: <input type="number" name="can_area_no" required></p>
-</fieldset>
-<hr style="background-color:grey; height:2px;">
-<fieldset>
-<legend><h2>Mover Information</h2></legend>
-<p>Mover Full Name: <input type="text" name="mover_name" required></p>
-<p>Date of Birth: <input type="date" name="mover_dob" required></p>
-<p>Gender: <input type="radio" name="mover_gender" value='Male'>Male
-         <input type="radio" name="mover_gender" value='Female'>Female  </p>
-<p>Father Name: <input type="text" name="mover_father_name" required></p>
-<p>Voter Id:<input type="number" name="mover_voter_id" required></p>
-<h3>Address</h3>
-<p>District: <input type="text" name="mover_district" required></p>
-<p>Municipality/VDC: <input type="text" name="mover_vdc" required></p>
-<p>Ward No: <input type="number" name="mover_ward" required></p>
-</fieldset>
-<hr style="background-color:grey; height:2px;">
-<fieldset>
-<legend><h2>Supporter Information</h2></legend>
-<p>Supporter Full Name: <input type="text" name="supp_name" required></p>
-<p>Date of Birth: <input type="date" name="supp_dob" required></p>
-<p>Gender: <input type="radio" name="supp_gender" value='Male'>Male
-         <input type="radio" name="supp_gender" value='Female'>Female  </p>
-<p>Father Name: <input type="text" name="supp_father_name" required></p>
-<p>Voter Id:<input type="number" name="supp_voter_id" required></p>
-<h3>Address</h3>
-<p>District: <input type="text" name="supp_district" required></p>
-<p>Municipality/VDC: <input type="text" name="supp_vdc" required></p>
-<p>Ward No: <input type="number" name="supp_ward" required></p>
-</fieldset>
-<br>
-<input type="submit" value="Submit" style="border:none; width:100px; height:40px; background-color:#4CAF50; color:white; font-size:16px; margin-right:10px">
-<input type="reset" value="Reset"style="border:none; width:100px; height:40px; background-color:#4CAF50; color:white; font-size:16px">
-</form>
-=======
->>>>>>> 169d524256b294fcd51e6a06183702f980b98551
 </body>
 
 </html>
