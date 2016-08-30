@@ -72,18 +72,22 @@
                 <a href="/polls/voter" class="btn btn-primary btn-xl page-scroll">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register as a Voter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
         
                 <a href="/polls/candid" class="btn btn-primary btn-xl page-scroll">Register as a Candidate</a>
+
+                
+
                 <hr>
-                <a href="#about">View your registration</a>
+                <p>Check your registration details<br>
+                <a href="#about" class="page-scroll">Voter Registration</a><br> <a href="#about2" class="page-scroll">Candidate Registration</a> </p>
             </div>
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
+    <section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">View Your Registration</h2>
-                    <hr class="light">
+                    <h2 class="section-heading">Check Your Voter Registration Details</h2>
+                    <hr >
                    
 
                     <form   action="{% url 'polls:voterview'  %}" method="post">
@@ -96,7 +100,7 @@
                             <label for="citizenshipno">Citizenship Number:</label>
                             <input type="text" class="form-control" id="voter_id" name="citizenship_id" required>
                         </div>
-                        <button type="submit" value="Submit" class="page-scroll btn btn-default btn-xl sr-button">Submit</button>
+                        <button type="submit" value="Submit" class="page-scroll btn btn-primary btn-xl sr-button">Submit</button>
                     </form>
                     
                     
@@ -105,11 +109,11 @@
         </div>
     </section>
 
-<section class="bg-primary" id="about">
+<section class="bg-primary" id="about2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">View Your Registration</h2>
+                    <h2 class="section-heading">Check Your Candidate Registration Details</h2>
                     <hr class="light">
                    
 
