@@ -1,0 +1,117 @@
+{{x.voter_id}}
+{{check}}
+
+
+
+
+<form action="{% url 'polls:edit2'  %}" method="post">
+
+{% csrf_token %}
+
+<br>
+
+Voter Id:{{x.voter_id}}
+<br>
+<br>
+Name:  <input type="text" name="name" value='{{x.name}}' />
+<br>
+<br>  {% if x.gender == 'M' %}
+Gender: <input type="radio" name="gender" value='M' checked>Male
+         <input type="radio" name="gender" value='F'>Female
+
+ {%else%}
+    Gender: <input type="radio" name="gender" value='M' >Male
+         <input type="radio" name="gender" value='F' checked>Female
+{%endif%}
+  
+<br>
+<br>
+Spouse Name:  <input type="text" name="spousename"  value='{{x.spousename}}'/>
+<br>
+<br>
+Father Name: <input type="text" name="fathername" value='{{x.fathername}}'/>
+<br>
+<br>
+GrandFather Name: <input type="text" name="gfathername" value='{{x.gfathername}}'/>
+<br>
+<br>
+Mother Tongue: <input type="text" name="mothertongue" value='{{x.mothertongue}}'/>
+<br>
+<br>
+Mobile:<input type="text" name="mobile" value='{{x.mobile}}'/>
+<br>
+<br>
+Email: <input type="email" name="email" value='{{x.email}}'/>
+<br>
+<br>
+
+Literacy Status <input type="radio" name="literacystatus" value='Y' checked>Yes
+         <input type="radio" name="literacystatus" value='N'>No
+<br>
+<br> 
+Qualification <input type="text" name="qualification" value='{{x.qualification}}'/>
+<br>
+<br>
+<br>
+Permanent Address
+<br>
+<br>
+District           <input type="text" name="district" value='{{x.district}}'>
+<br>
+<br>
+VDC/Municipality            <input type="text" name="vdc_municipality"  value='{{x.vdc_municipality}}'>
+<br>
+<br>
+Ward No <input type="text" name="ward_no" value='{{x.ward_no}}'>
+<br>
+<br>
+<br>
+ Disability  <input type="radio" name="disability" value="NULL" checked>None
+         <input type="radio" name="disability" value="a">Visual Impaired
+          <input type="radio" name="disability" value="b">Hearing Impaired  
+ <input type="radio" name="disability" value="c">Speech Impaired
+         <input type="radio" name="disability" value="d">Amputee
+         <input type="radio" name="disability" value="e">Other
+
+<br>
+<br>
+<br>
+Citizenship Id <input type="text" name="citizenship" value='{{x.citizenship_id}}'>
+<br>
+<br>
+<br>
+Issued Address  <br>
+<br>
+District           <input type="text" name="cdistrict">
+<br>
+<br>
+VDC/Municipality            <input type="text" name="cvdc_municipality">
+<br>
+<br>
+Ward No <input type="text" name="cward_no">
+<br>
+<br>
+<br>
+Citizenship Type <input type="text" name="citizenshiptype" value='{{x.citizenshiptype}}'>
+<br>
+<br>
+BirthDistrict <input type="text" name="birthdistrict">
+<br>
+<br>
+Issue Date <input type="date" name="issuedate">
+<br>
+<br>
+DOB <input type="date" name="dob">
+<br>
+<br>
+<input type="submit" value="save"/>
+
+
+</form>
+
+</center>
+
+</body>
+</html>
+
+
