@@ -1,2 +1,2 @@
-%% Sample Project for Online Voters registration in Nepal.
+## Sample Project for Online Voters registration in Nepal.
 
