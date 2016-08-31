@@ -46,6 +46,41 @@ def edit(request):
     return render(request, 'polls/edit.html',{'check':check,'x':x})
 
 
+def canedit(request):
+    check = 2
+    err = 1
+
+    if request.method=='POST':
+      try:
+
+        voterId = request.POST['voterr_id']
+        can_name = request.POST['can_name']
+        print(can_name)
+        print(voterId)
+        canInfo = Candidate.objects.get(can_voter_id = voterId, can_fullname = can_name)
+        print(canInfo.can_mover_id)
+        pledgeInfo = Pledge.objects.get(pl_can_id = canInfo.can_id) 
+        print(pledgeInfo.pl_can_id)
+        canAddressInfo = Address.objects.get(address_id = canInfo.can_address_id)
+        areaInfo = Area.objects.get(area_id = canInfo.can_area_id)
+        partyInfo = Party.objects.get(party_id = canInfo.can_party_id)
+        print(partyInfo.party_name)
+        moverInfo = Mover.objects.get(mover_id = canInfo.can_mover_id) 
+        print(moverInfo.mover_address_id)
+        moverAddressInfo = Address.objects.get(address_id = moverInfo.mover_address_id)
+        print(moverAddressInfo.address_id)
+        suppInfo = Supporter.objects.get(supp_id = canInfo.can_supp_id)
+        print(suppInfo.supp_fullname)
+        suppAddressInfo = Address.objects.get(address_id = suppInfo.supp_address_id)
+        check = 0
+
+      except:
+        check = 1
+    return render(request,'polls/canedit.html',{'check':check,'canInfo':canInfo,
+    'canAddressInfo':canAddressInfo,'areaInfo':areaInfo,'partyInfo':partyInfo,
+    'moverInfo':moverInfo, 'pledgeInfo':pledgeInfo, 'moverAddressInfo':moverAddressInfo,
+    'suppInfo':suppInfo, 'suppAddressInfo':suppAddressInfo})
+
 def edit2(request):
     
     check=2

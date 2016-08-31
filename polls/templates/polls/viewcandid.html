@@ -127,18 +127,11 @@
 </fieldset>
 
 
-
-<legend style="color:white">Name:</legend>
-								<div style="color:black" class="well well-sm" >
-								{{x.name}}
-							</div>
-
-
-	 <form action="{% url 'polls:edit' %}" method="post">
+	 <form action="{% url 'polls:canedit' %}" method="post">
 
 		 {%csrf_token %}
 
-<button class='page-scroll btn btn-default btn-xl sr-button' type='text' name='voter_id' value='{{x.voter_id}}'>Edit</button>
+<button class='page-scroll btn btn-default btn-xl sr-button' type='text' name='can_id' value='{{canInfo.can_id}}'>Edit</button>
 </form>
 						
 				</div>
@@ -178,13 +171,6 @@
 
 		<!-- Theme JavaScript -->
 		<script src="{% static 'polls/js/creative.min.js' %}"></script>
-
-{% if check == 0 %}
-	<h1>Sucessfully submitted</h1>
-{%elif check == 1 %}
-	<h1>Error in one or more input</h1>
-{% endif %}
-
 
 
 </body>
