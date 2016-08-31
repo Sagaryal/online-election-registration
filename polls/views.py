@@ -14,6 +14,7 @@ from .models import Party
 import datetime
 from django.utils import timezone
 from random import randint
+import hashlib
 
 
 def index(request):
@@ -266,25 +267,29 @@ def candidview(request):
   print("viewrun")
   if request.method =='POST':
     try:
-
+      #sth = int(hashlib.md5(str(565)).hexdigest(), 16) >> 64
       voterId = request.POST['voterr_id']
       can_name = request.POST['can_name']
-      print(can_name)
-      print(voterId)
+      #print(can_name)
+      #print(voterId)
       canInfo = Candidate.objects.get(can_voter_id = voterId, can_fullname = can_name)
-      print(canInfo.can_mover_id)
+      #print(canInfo.can_mover_id)
       pledgeInfo = Pledge.objects.get(pl_can_id = canInfo.can_id) 
-      print(pledgeInfo.pl_can_id)
+      #print(pledgeInfo.pl_can_id)
       canAddressInfo = Address.objects.get(address_id = canInfo.can_address_id)
       areaInfo = Area.objects.get(area_id = canInfo.can_area_id)
-      partyInfo = Party.objects.get(party_id = canInfo.can_party_id)
-      print(partyInfo.party_name)
+
+      if canInfo.can_party_id is None:
+        partyInfo = None
+      else:
+        partyInfo = Party.objects.get(party_id = canInfo.can_party_id)
+
       moverInfo = Mover.objects.get(mover_id = canInfo.can_mover_id) 
-      print(moverInfo.mover_address_id)
+      #print(moverInfo.mover_address_id)
       moverAddressInfo = Address.objects.get(address_id = moverInfo.mover_address_id)
-      print(moverAddressInfo.address_id)
+      #print(moverAddressInfo.address_id)
       suppInfo = Supporter.objects.get(supp_id = canInfo.can_supp_id)
-      print(suppInfo.supp_fullname)
+      #print(suppInfo.supp_fullname)
       suppAddressInfo = Address.objects.get(address_id = suppInfo.supp_address_id)
       check = 0
 
@@ -323,7 +328,7 @@ def candid(request):
         partyVal = Party.objects.get(party_name = canPartyName)
 
       except:
-        partyId = randint(100000,999999)  #int(hashlib.md5(canPartyName).hexdigest(), 16) >> 64
+        partyId = int(hashlib.md5(canPartyName.encode('utf-8')).hexdigest(), 16) >> 64
         partyVal = Party.objects.create(party_id = partyId,
                     party_name = canPartyName)
         partyVal.save()
@@ -357,14 +362,14 @@ def candid(request):
     suppWard = request.POST['supp_ward']
 
     #Generate a unique id based on the input parameters
-    canId = randint(100000,999999)  #int(hashlib.md5(str(canVoterId)).hexdigest(), 16) >> 64
-    moverId = randint(100000,999999) #int(hashlib.md5(str(moverVoterId)).hexdigest(), 16) >> 64
-    suppId = randint(100000,999999)  #int(hashlib.md5(str(suppVoterId)).hexdigest(), 16) >> 64
-    areaId = randint(100000,999999)  #int(hashlib.md5(canAreaDistrict + str(canAreaNo)).hexdigest(), 16) >> 649
+    canId = int(hashlib.md5(str(canVoterId).encode('utf-8')).hexdigest(), 16) >> 96
+    moverId = int(hashlib.md5(str(moverVoterId).encode('utf-8')).hexdigest(), 16) >> 96
+    suppId = int(hashlib.md5(str(suppVoterId).encode('utf-8')).hexdigest(), 16) >> 96
+    areaId = int(hashlib.md5(canAreaDistrict.encode('utf-8') + str(canAreaNo).encode('utf-8')).hexdigest(), 16) >> 96
   
-    canAddressId = randint(100000,999999)#int(hashlib.md5(canDistrict + canVDC + str(canWard)).hexdigest(), 16) >> 64
-    moverAddressId =randint(100000,999999) #int(hashlib.md5(moverDistrict + moverVDC + str(moverWard)).hexdigest(), 16) >> 64
-    suppAddressId = randint(100000,999999)   #int(hashlib.md5(suppDistrict + suppVDC + str(suppWard)).hexdigest(), 16) >> 64
+    canAddressId = int(hashlib.md5(canDistrict.encode('utf-8') + canVDC.encode('utf-8') + str(canWard).encode('utf-8')).hexdigest(), 16) >> 96
+    moverAddressId = int(hashlib.md5(moverDistrict.encode('utf-8') + moverVDC.encode('utf-8') + str(moverWard).encode('utf-8')).hexdigest(), 16) >> 96
+    suppAddressId = int(hashlib.md5(suppDistrict.encode('utf-8') + suppVDC.encode('utf-8') + str(suppWard).encode('utf-8')).hexdigest(), 16) >> 96
       
     try:
       canAddress = Address.objects.get(district = canDistrict, 
@@ -449,12 +454,10 @@ def candid(request):
     pledge.pl_bankname = canPledgeBank
     pledge.pl_can_id = canId
     pledge.save()
+    
 
 
   return render(request, 'polls/candid.html')
-
-
-
 
 
 def voter(request):
