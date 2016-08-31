@@ -26,6 +26,7 @@ def index(request):
 
 def edit(request):
     check=2
+    print("editrun")
     if request.method=='POST':
       
       x=VoterInfo()
@@ -48,16 +49,12 @@ def edit(request):
 
 def canedit(request):
     check = 2
-    err = 1
-
+    print("run")
     if request.method=='POST':
       try:
 
-        voterId = request.POST['voterr_id']
-        can_name = request.POST['can_name']
-        print(can_name)
-        print(voterId)
-        canInfo = Candidate.objects.get(can_voter_id = voterId, can_fullname = can_name)
+        canId = request.POST['can_id']
+        canInfo = Candidate.objects.get(can_id = canId)
         print(canInfo.can_mover_id)
         pledgeInfo = Pledge.objects.get(pl_can_id = canInfo.can_id) 
         print(pledgeInfo.pl_can_id)
@@ -76,7 +73,7 @@ def canedit(request):
 
       except:
         check = 1
-        
+
     return render(request,'polls/canedit.html',{'check':check,'canInfo':canInfo,
     'canAddressInfo':canAddressInfo,'areaInfo':areaInfo,'partyInfo':partyInfo,
     'moverInfo':moverInfo, 'pledgeInfo':pledgeInfo, 'moverAddressInfo':moverAddressInfo,
@@ -216,6 +213,7 @@ def edit2(request):
     return render(request, 'polls/edit2.html',{'check':check})
 
 def voterview(request):
+    print("voterviewrun")
     check=2
     a=2
     c=3
@@ -265,7 +263,7 @@ def voteredit(request):
 def candidview(request):
   check = 2
   err = 1 
-
+  print("viewrun")
   if request.method =='POST':
     try:
 

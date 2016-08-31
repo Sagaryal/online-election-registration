@@ -99,7 +99,7 @@
 
 
 
-            <form action="{% url 'polls:canedit2'  %}" method="post">
+            <form action="{% url 'polls:edit2'  %}" method="post">
 
 {% csrf_token %}
 
@@ -349,14 +349,14 @@
                     <div class="form-group">
                     <label for="mover_district" class="col-xs-4 col-form-label">District:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="mover_district" class="form-control" id="mover_district">
+                    <input type="text" required="true" name="mover_district" class="form-control" id="mover_district" value="{{moverAddressInfo.district}}">
                     </div>
                     </div>
                     <br><br><br>
                     <div class="form-group">
                     <label for="mover_vdc" class="col-xs-4 col-form-label">VDC/Municipality:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="mover_vdc" class="form-control" id="mover_vdc">
+                    <input type="text" required="true" name="mover_vdc" class="form-control" id="mover_vdc" value="{{moverAddressInfo.vdc_municipality}}">
                     </div>
                     </div>
                     
@@ -364,7 +364,7 @@
                     <div class="form-group">
                     <label for="mover_ward" class="col-xs-4 col-form-label">Ward No:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="mover_ward" class="form-control" id="mover_ward">
+                    <input type="text" required="true" name="mover_ward" class="form-control" id="mover_ward" value=" {{moverAddressInfo.wardno}}">
                     </div>
                     </div>
                     <br>
@@ -379,42 +379,61 @@
 
               <div class="form-group" >
                 <label for="supp_name">Supporter Full Name:</label>
-                <input type="text" required="true" name="supp_name" class="form-control" id="supp_name">
+                <input type="text" required="true" name="supp_name" class="form-control" id="supp_name" value="{{suppInfo.supp_fullname}} ">
             </div>
 
             <div class="form-group">
                 <label for="supp_dob">Date of Birth:</label>
-                <input type="date" required="true" name="supp_dob" class="form-control" id="supp_dob">
+                <input type="date" required="true" name="supp_dob" class="form-control" id="supp_dob" value="{{suppInfo.supp_dob}}">
             </div>
 
 
-            
+            {{% if suppInfo.supp_gender == 'Male'}}
             <fieldset class="form-group">
             <label for="supp_gender">Gender:</label>
                
                 <div class="radio">
                     <label>
-                        <input type="radio" name="supp_gender" id="radio_male"  checked>
+                        <input type="radio" name="supp_gender" id="radio_male" value="Male" checked>
                         Male
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="supp_gender" id="radio_female" >
+                        <input type="radio" name="supp_gender" value="Female" id="radio_female" >
                         Female
                     </label>
                 </div>
     
             </fieldset>
+            {{%else%}}
+             <fieldset class="form-group">
+            <label for="supp_gender">Gender:</label>
+               
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="supp_gender" id="radio_male"  value="Male">
+                        Male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="supp_gender" id="radio_female" value="Female" checked>
+                        Female
+                    </label>
+                </div>
+    
+            </fieldset>
+            {{%endif}}
 
              <div class="form-group">
                 <label for="supp_father_name">Father Name:</label>
-                <input type="text" required="true" name="supp_father_name" class="form-control" id="supp_father_name">
+                <input type="text" required="true" name="supp_father_name" class="form-control" id="supp_father_name" value="{{suppInfo.supp_fathername}}">
             </div>
 
   <div class="form-group">
                 <label for="supp_voter_id">Voter Id:</label>
-                <input type="number" name="supp_voter_id" class="form-control" id="supp_voter_id" required="true">
+                <input type="number" name="supp_voter_id" class="form-control" id="supp_voter_id" required="true" value="{{suppInfo.supp_voter_id}}">
             </div>
                 
 <fieldset class="form-group">
@@ -423,14 +442,15 @@
                     <div class="form-group">
                     <label for="supp_district" class="col-xs-4 col-form-label">District:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="supp_district" class="form-control" id="supp_district">
+                    <input type="text" required="true" name="supp_district" class="form-control" id="supp_district" value="{{suppAddressInfo.district}}">
                     </div>
                     </div>
                     <br><br><br>
                     <div class="form-group">
                     <label for="supp_vdc" class="col-xs-4 col-form-label">VDC/Municipality:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="supp_vdc" class="form-control" id="supp_vdc">
+                    <input type="text" required="true" name="supp_vdc" class="form-control" id="supp_vdc" value="{{suppAddressInfo.vdc_municipality}}
+">
                     </div>
                     </div>
                     
@@ -438,7 +458,7 @@
                     <div class="form-group">
                     <label for="supp_ward" class="col-xs-4 col-form-label">Ward No:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="supp_ward" class="form-control" id="supp_ward">
+                    <input type="text" required="true" name="supp_ward" class="form-control" id="supp_ward" value="{{suppAddressInfo.wardno}}">
                     </div>
                     </div>
                     <br>
