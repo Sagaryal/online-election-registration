@@ -59,6 +59,7 @@
 		party.required = no.checked ? false : true;
 
 	}			
+
 			
 </script>
 
@@ -122,13 +123,13 @@
                
                 <div class="radio">
                     <label>
-                        <input type="radio" name="can_gender" id="radio_male"  checked>
+                        <input type="radio" name="can_gender" id="radio_male"  value="Male" checked>
                         Male
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="can_gender" id="radio_female" >
+                        <input type="radio" value="Female" name="can_gender" id="radio_female" >
                         Female
                     </label>
                 </div>
@@ -151,7 +152,8 @@
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="can_party" id="checkNo" checked onclick="showDiv()">
+
+                        <input type="radio" name="can_party" id="checkNo" onclick="showDiv()" checked >
                         No
                     </label>
                 </div>
@@ -429,6 +431,7 @@
 
     <!-- Theme JavaScript -->
     <script src="{% static 'polls/js/creative.min.js' %}"></script>
+
 
 </body>
 

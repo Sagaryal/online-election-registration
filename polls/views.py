@@ -76,6 +76,7 @@ def canedit(request):
 
       except:
         check = 1
+        
     return render(request,'polls/canedit.html',{'check':check,'canInfo':canInfo,
     'canAddressInfo':canAddressInfo,'areaInfo':areaInfo,'partyInfo':partyInfo,
     'moverInfo':moverInfo, 'pledgeInfo':pledgeInfo, 'moverAddressInfo':moverAddressInfo,

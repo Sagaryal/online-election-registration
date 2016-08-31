@@ -11,7 +11,8 @@ urlpatterns=[
     url(r'voterview/$',views.voterview,name='voterview'),
     url(r'edit/$',views.edit,name='edit'),
     url(r'edit2/$',views.edit2,name='edit2'),
-    url(r'candidview/$',views.candidview,name='candidview')
+    url(r'candidview/$',views.candidview,name='candidview'),
+    url(r'canedit/$',views.canedit,name='canedit')
    
 
    

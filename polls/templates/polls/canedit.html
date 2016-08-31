@@ -99,7 +99,7 @@
 
 
 
-            <form action="{% url 'polls:candid'  %}" method="post">
+            <form action="{% url 'polls:canedit2'  %}" method="post">
 
 {% csrf_token %}
 
@@ -126,10 +126,24 @@
                         Male
                     </label>
                 </div>
-                {%else%}
+                
                 <div class="radio">
                     <label>
                         <input type="radio" name="can_gender" value="Female" id="radio_female" >
+                        Female
+                    </label>
+                </div>
+                {%else%}
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="can_gender" id="radio_male"  value="Male">
+                        Male
+                    </label>
+                </div>
+                
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="can_gender" value="Female" id="radio_female" checked>
                         Female
                     </label>
                 </div>
@@ -138,48 +152,78 @@
 
              <div class="form-group">
                 <label for="can_father_name">Father Name:</label>
-                <input type="text" required="true" name="can_father_name" class="form-control" id="can_father_name">
+                <input type="text" required="true" name="can_father_name" class="form-control" id="can_father_name" value="{{canInfo.can_fathername}}">
             </div>
+            {{% if partyInfo.party_id > 0 %}}
+             <fieldset class="form-group">
+            <label for="can_party">Party Involved:</label>
+               
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="can_party" id="checkYes"  onclick="showDiv()" checked>
+                        Yes
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="can_party" id="checkNo" onclick="showDiv()">
+                        No
+                    </label>
+                </div>
+                
+    
+            </fieldset>
+<div id="divShow" style="display:block">
+		 <div class="form-group">
+                <label for="can_party_name">Party Name:</label>
+                <input type="text" name="can_party_name" class="form-control" id="can_party_name" required>
+            </div>
+           
+	</div>
+     {{%else%}}
 
              <fieldset class="form-group">
             <label for="can_party">Party Involved:</label>
                
                 <div class="radio">
                     <label>
-                        <input type="radio" name="can_party" id="checkYes"  onclick="showDiv()" >
+                        <input type="radio" name="can_party" id="checkYes"  onclick="showDiv()">
                         Yes
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="can_party" id="checkNo" checked onclick="showDiv()">
+                        <input type="radio" name="can_party" id="checkNo" onclick="showDiv()" checked>
                         No
                     </label>
                 </div>
+                
     
             </fieldset>
 <div id="divShow" style="display:none">
-		 <div class="form-group">
+         <div class="form-group">
                 <label for="can_party_name">Party Name:</label>
                 <input type="text" name="can_party_name" class="form-control" id="can_party_name">
             </div>
-	</div>	
+           
+    </div>	
+     {{%endif%}}
             
             <div class="form-group">
                 <label for="can_voter_id">Voter Id:</label>
-                <input type="number" name="can_voter_id" class="form-control" id="can_voter_id" required="true">
+                <input type="number" name="can_voter_id" class="form-control" id="can_voter_id" required="true" value="{{canInfo.can_voter_id}}">
             </div>
                 
 
 
             <div class="form-group">
                 <label for="can_pledge_bank">Pledge Bank Name: </label>
-                <input type="text" required="true" name="can_pledge_bank" class="form-control" id="can_pledge_bank">
+                <input type="text" required="true" name="can_pledge_bank" class="form-control" id="can_pledge_bank" value="{{pledgeInfo.pl_bankname}}">
             </div>
 
 <div class="form-group">
                 <label for="can_pledge_no">Pledge Voucher No:</label>
-                <input type="number" name="can_pledge_no" class="form-control" id="can_pledge_no" required="true">
+                <input type="number" name="can_pledge_no" class="form-control" id="can_pledge_no" required="true" value="{{pledgeInfo.pl_voucherno}}">
             </div>
                
 <fieldset class="form-group">
@@ -188,14 +232,14 @@
                     <div class="form-group">
                     <label for="can_district" class="col-xs-4 col-form-label">District:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="can_district" class="form-control" id="can_district">
+                    <input type="text" required="true" name="can_district" class="form-control" id="can_district" value="{{canAddressInfo.district}}">
                     </div>
                     </div>
                     <br><br><br>
                     <div class="form-group">
                     <label for="can_vdc" class="col-xs-4 col-form-label">VDC/Municipality:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="can_vdc" class="form-control" id="can_vdc">
+                    <input type="text" required="true" name="can_vdc" class="form-control" id="can_vdc" value="{{canAddressInfo.vdc_municipality}}">
                     </div>
                     </div>
                     
@@ -203,7 +247,7 @@
                     <div class="form-group">
                     <label for="can_ward" class="col-xs-4 col-form-label">Ward No:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="can_ward" class="form-control" id="can_ward">
+                    <input type="text" required="true" name="can_ward" class="form-control" id="can_ward" value="{{canAddressInfo.wardno}}">
                     </div>
                     </div>
                     <br>
@@ -217,14 +261,14 @@
                     <div class="form-group">
                     <label for="can_area_district" class="col-xs-4 col-form-label">District:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="can_area_district" class="form-control" id="can_area_district">
+                    <input type="text" required="true" name="can_area_district" class="form-control" id="can_area_district" value="{{areaInfo.area_district}}">
                     </div>
                     </div>
                     <br><br><br>
                     <div class="form-group">
                     <label for="can_area_no" class="col-xs-4 col-form-label">Number:</label>
                     <div class="col-xs-8">
-                    <input type="text" required="true" name="can_area_no" class="form-control" id="can_area_no">
+                    <input type="text" required="true" name="can_area_no" class="form-control" id="can_area_no" value="{{areaInfo.area_no}}">
                     </div>
                     </div>
                     
@@ -242,42 +286,61 @@
 
               <div class="form-group" >
                 <label for="mover_name">Mover Full Name:</label>
-                <input type="text" required="true" name="mover_name" class="form-control" id="mover_name">
+                <input type="text" required="true" name="mover_name" class="form-control" id="mover_name" value="{{moverInfo.mover_fullname}}">
             </div>
 
             <div class="form-group">
                 <label for="mover_dob">Date of Birth:</label>
-                <input type="date" required="true" name="mover_dob" class="form-control" id="mover_dob">
+                <input type="date" required="true" name="mover_dob" class="form-control" id="mover_dob" value="{{moverInfo.mover_dob}}">
             </div>
 
 
-            
+            {{% if moverInfo.mover_gender == 'Male' %}}
             <fieldset class="form-group">
             <label for="mover_gender">Gender:</label>
                
                 <div class="radio">
                     <label>
-                        <input type="radio" name="mover_gender" id="radio_male"  checked>
+                        <input type="radio" name="mover_gender" id="radio_male"  value="Male" checked>
                         Male
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="mover_gender" id="radio_female" >
+                        <input type="radio" name="mover_gender" id="radio_female" value="Female">
                         Female
                     </label>
                 </div>
     
             </fieldset>
+            {{%else%}}
+             <fieldset class="form-group">
+            <label for="mover_gender">Gender:</label>
+               
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="mover_gender" id="radio_male"  value="Male">
+                        Male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="mover_gender" id="radio_female" value="Female" checked>
+                        Female
+                    </label>
+                </div>
+    
+            </fieldset>
+            {{%endif%%}}
 
              <div class="form-group">
                 <label for="mover_father_name">Father Name:</label>
-                <input type="text" required="true" name="mover_father_name" class="form-control" id="mover_father_name">
+                <input type="text" required="true" name="mover_father_name" class="form-control" id="mover_father_name" value="{{moverInfo.mover_fathername}}">
             </div>
 
   <div class="form-group">
                 <label for="mover_voter_id">Voter Id:</label>
-                <input type="number" name="mover_voter_id" class="form-control" id="mover_voter_id" required="true">
+                <input type="number" name="mover_voter_id" class="form-control" id="mover_voter_id" required="true" value="{{moverInfo.mover_voter_id}}">
             </div>
                 
 <fieldset class="form-group">
