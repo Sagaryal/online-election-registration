@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CANDIDATE REGISTRATION</title>
+<style>
+
+input[type=text], input[type=number], input[type=date] {
+	outline:none;
+	border: 2px solid grey;
+	width: 30%;
+    padding: 5px 10px;
+    box-sizing: border-box;
+	
+}
+
+input[type=text]:focus {
+    border: 2px solid #555;
+}
+</style>
+<script>
+	/*function showDiv() {
+		var val = document.getElementById("checkYes");
+		var divShow = document.getElementById("divShow");
+		divShow.style.display = val.checked ? "block" : "none";
+		
+	}*/
+	function showDiv() {
+		var yes = document.getElementById('checkYes');
+		var no = document.getElementById('checkNo');
+		var divShow = document.getElementById('divShow');
+		
+		divShow.style.display = yes.checked ? "block" : "none";
+		divShow.style.display = no.checked ? "none" : "block";
+	
+		//divShow.required = yes.checked ? true : false;
+		//divShow.required = no.checked ? false : true;
+		
+		if(no.checked)
+			divShow.removeAttribute("required");
+		else if (yes.checked)
+			divShow.setAttribute("required","true");
+
+	}			
+			
+</script>
+</head>
+<body>
+
+
+<form action="{% url 'polls:candid'  %}" method="post">
+
+{% csrf_token %}
+
+<h1>Candidate Registration</h1>
+<fieldset>
+<legend><h2>Candidate Information</h2></legend>
+<p>Candidate Full Name: <input type="text" name="can_name" required></p>
+<p>Date of Birth: <input type="date" name="can_dob" required></p>
+<p>Gender: <input type="radio" name="can_gender" value='Male' required>Male
+         <input type="radio" name="can_gender" value='Female' required>Female  </p>
+<p>Father Name: <input type="text" name="can_father_name" required></p>
+<p>Party Involved: <input type="radio" id="checkYes" name="can_party" value="Yes" onclick="showDiv()">Yes
+	<input type="radio" id="checkNo" name="can_party" value="No" onclick="showDiv()" checked>No</p>
+	<div id="divShow" style="display:none">
+		<p>Party Name: <input type="text" name="can_party_name"></p>
+	</div>	
+
+<p>Voter Id:<input type="number" name="can_voter_id" required></p>
+<p>Pledge Bank Name: <input type="text" name="can_pledge_bank" required></p>
+<p>Pledge Voucher No: <input type="number" name="can_pledge_no" required></p>
+<h3>Address</h3>
+<p>District: <input type="text" name="can_district" required></p>
+<p>Municipality/VDC: <input type="text" name="can_vdc" required></p>
+<p>Ward No: <input type="number" name="can_ward" required></p>
+<h3>Area</h3>
+<p>Area District: <input type="text" name="can_area_district" required></p>
+<p>Area Number: <input type="number" name="can_area_no" required></p>
+</fieldset>
+<hr style="background-color:grey; height:2px;">
+<fieldset>
+<legend><h2>Mover Information</h2></legend>
+<p>Mover Full Name: <input type="text" name="mover_name" required></p>
+<p>Date of Birth: <input type="date" name="mover_dob" required></p>
+<p>Gender: <input type="radio" name="mover_gender" value='M'>Male
+         <input type="radio" name="mover_gender" value='F'>Female  </p>
+<p>Father Name: <input type="text" name="mover_father_name" required></p>
+<p>Voter Id:<input type="number" name="mover_voter_id" required></p>
+<h3>Address</h3>
+<p>District: <input type="text" name="mover_district" required></p>
+<p>Municipality/VDC: <input type="text" name="mover_vdc" required></p>
+<p>Ward No: <input type="number" name="mover_ward" required></p>
+</fieldset>
+<hr style="background-color:grey; height:2px;">
+<fieldset>
+<legend><h2>Supporter Information</h2></legend>
+<p>Supporter Full Name: <input type="text" name="supp_name" required></p>
+<p>Date of Birth: <input type="date" name="supp_dob" required></p>
+<p>Gender: <input type="radio" name="supp_gender" value='M'>Male
+         <input type="radio" name="supp_gender" value='F'>Female  </p>
+<p>Father Name: <input type="text" name="supp_father_name" required></p>
+<p>Voter Id:<input type="number" name="supp_voter_id" required></p>
+<h3>Address</h3>
+<p>District: <input type="text" name="supp_district" required></p>
+<p>Municipality/VDC: <input type="text" name="supp_vdc" required></p>
+<p>Ward No: <input type="number" name="supp_ward" required></p>
+</fieldset>
+<br>
+<input type="submit" value="Submit" style="border:none; width:100px; height:40px; background-color:#4CAF50; color:white; font-size:16px; margin-right:10px">
+<input type="reset" value="Reset"style="border:none; width:100px; height:40px; background-color:#4CAF50; color:white; font-size:16px">
+</form>
+</body>
+</html>
+
